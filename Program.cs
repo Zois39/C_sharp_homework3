@@ -65,6 +65,7 @@ Console.WriteLine(Distance(coordinatesA, coordinatesB));
 */
 
 // Задача 23. Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+/*
 int ReadCoordinate (string str)
 {
     Console.Write(str);
@@ -79,3 +80,4 @@ void CubeTable (int num)
     Console.Write($"{Math.Pow(num, 3)}");
 }
 CubeTable(ReadCoordinate("Input number: "));
+*/
