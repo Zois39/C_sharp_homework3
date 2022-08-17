@@ -32,31 +32,50 @@ double Distance (int[] dot1, int[] dot2)
     double result = Math.Sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
     return result;
 }
-Console.Write("Input coordinates dot A: ");
-string numb1 = Console.ReadLine();
-int[] dotA = new int[3]{Convert.ToInt32(numb1)};
-int num = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input coordinates dot B: ");
-int[] dotB = new int[3]{2, 1, -7};
-Convert.ToInt32(Console.ReadLine());
-Console.WriteLine(Distance(dotA, dotB));
+string ReadCoordinate (string str)
+{
+    Console.Write(str);
+    return Console.ReadLine();
+}
+char chr = ',';
+int[] StrToArrInt (string str, char chr)
+{
+    string temp = "";
+    int[] arr = new int[3];
+    int j = 0;
+    for (int i = 0; i < str.Length; i++)
+    {
+        if (str[i] == chr)
+        {
+            arr[j] = Convert.ToInt32(temp);
+            temp = "";
+            j++;
+        }
+        else
+            temp = temp + str[i];
+    }
+    arr[j] = Convert.ToInt32(temp);
+    return arr;
+}
+string dotA = ReadCoordinate ("Input coordinate X,Y,Z dot A: ");
+string dotB = ReadCoordinate ("Input coordinate X,Y,Z dot B: ");
+int[] coordinatesA = StrToArrInt(dotA, chr);
+int[] coordinatesB = StrToArrInt(dotB, chr);
+Console.WriteLine(Distance(coordinatesA, coordinatesB));
 */
 
-
-void StringToArrayInt (string str, string search, int[] array)
+// Задача 23. Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+int ReadCoordinate (string str)
 {
-    int j = 0;
-    int k = 0;
-    for(int i = str.IndexOf(search); i < str.Length; i = i + search.Length)
-    {
-        array[j] = Convert.ToInt32(str.Substring(k, i));
-        j++;
-        k = k + i;
-    }
+    Console.Write(str);
+    return Convert.ToInt32(Console.ReadLine());
 }
-Console.Write("Input coordinates dot A: ");
-string str = Console.ReadLine();
-string search = ",";
-int[] arr = new int[5];
-StringToArrayInt(str, search, arr);
-Console.WriteLine(arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3] + " ");
+void CubeTable (int num)
+{
+    for (int i = 1; i < num; i++)
+    {
+        Console.Write($"{Math.Pow(i, 3)},");
+    }
+    Console.Write($"{Math.Pow(num, 3)}");
+}
+CubeTable(ReadCoordinate("Input number: "));
